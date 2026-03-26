@@ -1,11 +1,15 @@
 aid: trivy
 name: Trivy
 description: >-
-  Trivy is a comprehensive security scanner for vulnerabilities, misconfigurations, secrets, and SBOM in containers and other artifacts.
+  Trivy is a comprehensive and versatile open-source security scanner that finds vulnerabilities, misconfigurations, secrets, and SBOM in containers, Kubernetes, code repositories, clouds, and more.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Containers
+  - Security
+  - Vulnerability Scanning
+  - Kubernetes
+  - SBOM
 url: >-
   https://raw.githubusercontent.com/api-evangelist/trivy/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -15,14 +19,28 @@ apis:
   - aid: trivy:trivy
     name: Trivy
     description: >-
-      Trivy is a comprehensive security scanner for vulnerabilities, misconfigurations, secrets, and SBOM in containers and other artifacts.
-    humanURL: https://github.com/api-evangelist/trivy
+      Trivy is a comprehensive and versatile open-source security scanner that finds vulnerabilities, misconfigurations, secrets, and SBOM in containers, Kubernetes, code repositories, clouds, and more.
+    humanURL: https://trivy.dev/
     tags:
       - Containers
-    properties: []
+      - Security
+      - Vulnerability Scanning
+      - Kubernetes
+      - SBOM
+    properties:
+      - type: Documentation
+        url: https://aquasecurity.github.io/trivy/
+      - type: Getting Started
+        url: https://aquasecurity.github.io/trivy/latest/getting-started/installation/
 common:
   - type: Website
-    url: https://github.com/api-evangelist/trivy
+    url: https://trivy.dev/
+  - type: Documentation
+    url: https://aquasecurity.github.io/trivy/
+  - type: Getting Started
+    url: https://aquasecurity.github.io/trivy/latest/getting-started/installation/
+  - type: GitHub Organization
+    url: https://github.com/aquasecurity
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
