@@ -1,0 +1,28 @@
+aid: trivy
+name: Trivy
+description: >-
+  Trivy is a comprehensive security scanner for vulnerabilities, misconfigurations, secrets, and SBOM in containers and other artifacts.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Containers
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/trivy/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: trivy:trivy
+    name: Trivy
+    description: >-
+      Trivy is a comprehensive security scanner for vulnerabilities, misconfigurations, secrets, and SBOM in containers and other artifacts.
+    humanURL: https://github.com/api-evangelist/trivy
+    tags:
+      - Containers
+    properties: []
+common:
+  - type: Website
+    url: https://github.com/api-evangelist/trivy
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
