@@ -6,10 +6,10 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Containers
-  - Security
-  - Vulnerability Scanning
   - Kubernetes
   - SBOM
+  - Security
+  - Vulnerability Scanning
 url: >-
   https://raw.githubusercontent.com/api-evangelist/trivy/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -23,10 +23,10 @@ apis:
     humanURL: https://trivy.dev/
     tags:
       - Containers
-      - Security
-      - Vulnerability Scanning
       - Kubernetes
       - SBOM
+      - Security
+      - Vulnerability Scanning
     properties:
       - type: Documentation
         url: https://aquasecurity.github.io/trivy/
