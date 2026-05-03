@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "trivy": "https://trivy.dev/vocab#",
+    "aqua": "https://aquasecurity.github.io/vocab#",
+    "VulnerabilityReport": "trivy:VulnerabilityReport",
+    "Vulnerability": "trivy:Vulnerability",
+    "Misconfiguration": "trivy:Misconfiguration",
+    "Secret": "trivy:Secret",
+    "SbomReport": "trivy:SbomReport",
+    "ComplianceReport": "trivy:ComplianceReport",
+    "artifactName": "trivy:artifactName",
+    "artifactType": "trivy:artifactType",
+    "vulnerabilityId": "trivy:vulnerabilityId",
+    "severity": "trivy:severity",
+    "pkgName": "trivy:pkgName",
+    "pkgVersion": "trivy:pkgVersion",
+    "fixedVersion": "trivy:fixedVersion",
+    "cvss": "trivy:cvss",
+    "scanTarget": "trivy:scanTarget",
+    "scanClass": "trivy:scanClass",
+    "schemaVersion": "schema:version",
+    "publishedDate": "schema:datePublished",
+    "references": "schema:citation",
+    "SoftwareApplication": "schema:SoftwareApplication",
+    "identifier": "schema:identifier",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "license": "schema:license"
+  }
+}

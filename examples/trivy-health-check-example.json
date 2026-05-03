@@ -1,0 +1,15 @@
+{
+  "operation": "healthCheck",
+  "description": "Check Trivy server health",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:4954/healthz",
+    "headers": {
+      "Trivy-Token": "your-token-here"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": "ok"
+  }
+}

@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Trivy Server API
+  description: >-
+    The Trivy Server API exposes HTTP endpoints when running Trivy in client/server mode.
+    In this mode, the server maintains a local vulnerability database and clients submit
+    scan requests without needing to download the database themselves. The server listens
+    on port 4954 by default and supports optional token-based authentication.
+  version: 0.70.0
+  contact:
+    url: https://trivy.dev/
+  license:
+    name: Apache 2.0
+    url: https://github.com/aquasecurity/trivy/blob/main/LICENSE
+externalDocs:
+  description: Trivy Client/Server Documentation
+  url: https://trivy.dev/latest/docs/references/modes/client-server/
+
+servers:
+  - url: http://localhost:4954
+    description: Trivy server default endpoint
+  - url: http://{host}:{port}
+    description: Custom Trivy server endpoint
+    variables:
+      host:
+        default: localhost
+        description: Trivy server hostname
+      port:
+        default: '4954'
+        description: Trivy server port
+
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      summary: Health Check
+      description: >-
+        Check if the Trivy server is running and healthy. Returns 200 OK with "ok"
+        body when the server is operational. Does not require authentication.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Server is healthy
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ok
+
+  /version:
+    get:
+      operationId: getVersion
+      summary: Get Server Version
+      description: >-
+        Retrieve the Trivy server version, vulnerability database version, Java
+        database version, and policy bundle version. Does not require authentication.
+      tags:
+        - Server
+      responses:
+        '200':
+          description: Server version information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionResponse'
+
+components:
+  securitySchemes:
+    TrivyToken:
+      type: apiKey
+      in: header
+      name: Trivy-Token
+      description: >-
+        Optional token-based authentication. When the server is started with --token,
+        all requests must include the token in the Trivy-Token header.
+
+  schemas:
+    VersionResponse:
+      type: object
+      description: Trivy server version and database information
+      properties:
+        Version:
+          type: string
+          description: Trivy server version
+          example: "0.70.0"
+        VulnerabilityDB:
+          type: object
+          description: Vulnerability database metadata
+          properties:
+            Version:
+              type: integer
+              description: Database schema version
+            NextUpdate:
+              type: string
+              format: date-time
+              description: Next scheduled database update
+            UpdatedAt:
+              type: string
+              format: date-time
+              description: Last database update timestamp
+            DownloadedAt:
+              type: string
+              format: date-time
+              description: When this database was downloaded
+        JavaDB:
+          type: object
+          description: Java vulnerability database metadata
+          properties:
+            Version:
+              type: integer
+            UpdatedAt:
+              type: string
+              format: date-time
+            NextUpdate:
+              type: string
+              format: date-time
+        PolicyBundle:
+          type: object
+          description: OPA policy bundle metadata
+          properties:
+            Digest:
+              type: string
+              description: Bundle content digest
+            DownloadedAt:
+              type: string
+              format: date-time
+
+tags:
+  - name: Health
+    description: Server health and liveness checks
+  - name: Server
+    description: Server metadata and version information

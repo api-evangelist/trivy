@@ -1,0 +1,59 @@
+extends: spectral:oas
+rules:
+  # Trivy Server API Convention Rules
+
+  trivy-operation-id-camel-case:
+    description: Operation IDs must use camelCase
+    message: "Operation ID '{{value}}' must use camelCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  trivy-require-tags:
+    description: All operations must have at least one tag
+    message: Operations must be tagged for organization
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  trivy-require-description:
+    description: All operations must have a description
+    message: Operations must have a description
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: description
+      function: truthy
+
+  trivy-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: "Summary '{{value}}' must start with a capital letter (Title Case)"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  trivy-token-auth-optional:
+    description: Trivy server supports optional token authentication via Trivy-Token header
+    message: Trivy-Token authentication scheme should be defined when auth is documented
+    severity: info
+    given: "$.components.securitySchemes"
+    then:
+      field: TrivyToken
+      function: truthy
+
+  trivy-health-endpoint-present:
+    description: Trivy server must expose a /healthz endpoint
+    message: The /healthz health check endpoint should be documented
+    severity: warn
+    given: "$.paths"
+    then:
+      field: /healthz
+      function: truthy

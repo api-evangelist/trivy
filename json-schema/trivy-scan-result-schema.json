@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/trivy/json-schema/trivy-scan-result-schema.json",
+  "title": "Trivy Scan Result",
+  "description": "Schema for a single scan result entry within a Trivy vulnerability report",
+  "type": "object",
+  "properties": {
+    "Target": {
+      "type": "string",
+      "description": "Name of the scanned target (image layer, file path, or dependency file)"
+    },
+    "Class": {
+      "type": "string",
+      "description": "Class of findings in this result",
+      "enum": ["os-pkgs", "lang-pkgs", "config", "secret", "license"]
+    },
+    "Type": {
+      "type": "string",
+      "description": "Package ecosystem or file type",
+      "examples": ["alpine", "debian", "ubuntu", "npm", "pip", "go", "maven", "cargo", "dockerfile", "kubernetes"]
+    },
+    "Packages": {
+      "type": "array",
+      "description": "Packages detected in this target",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": { "type": "string" },
+          "Version": { "type": "string" },
+          "Arch": { "type": "string" }
+        }
+      }
+    },
+    "Vulnerabilities": {
+      "type": "array",
+      "description": "Vulnerabilities detected for packages in this target",
+      "items": {
+        "type": "object",
+        "required": ["VulnerabilityID", "Severity"],
+        "properties": {
+          "VulnerabilityID": { "type": "string" },
+          "PkgName": { "type": "string" },
+          "InstalledVersion": { "type": "string" },
+          "FixedVersion": { "type": "string" },
+          "Severity": { "type": "string", "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN"] },
+          "Title": { "type": "string" },
+          "Description": { "type": "string" }
+        }
+      }
+    }
+  }
+}
