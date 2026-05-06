@@ -1,85 +1,108 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Trivy Security Scanning"
-  description: >-
-    Workflow capability for container and Kubernetes security scanning using Trivy.
-    Covers vulnerability detection in container images and packages, Kubernetes
-    CRD-based security reports via Trivy Operator, and server health management.
+  label: Trivy Security Scanning
+  description: Workflow capability for container and Kubernetes security scanning using Trivy. Covers vulnerability detection
+    in container images and packages, Kubernetes CRD-based security reports via Trivy Operator, and server health management.
     Supports DevSecOps pipelines integrating vulnerability scanning into CI/CD workflows.
   tags:
-    - Security
-    - Vulnerability Scanning
-    - Containers
-    - Kubernetes
-    - DevSecOps
-    - Open Source
-    - SBOM
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Security
+  - Vulnerability Scanning
+  - Containers
+  - Kubernetes
+  - DevSecOps
+  - Open Source
+  - SBOM
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      TRIVY_TOKEN: TRIVY_TOKEN
-
+- namespace: env
+  keys:
+    TRIVY_TOKEN: TRIVY_TOKEN
 capability:
   consumes:
-    - import: trivy-server
-      location: ./shared/trivy-server.yaml
-
+  - type: http
+    namespace: trivy-server
+    baseUri: http://localhost:4954
+    description: Trivy server HTTP API for health checks and version information
+    authentication:
+      type: apikey
+      key: Trivy-Token
+      value: '{{TRIVY_TOKEN}}'
+      placement: header
+    resources:
+    - name: health
+      path: /healthz
+      description: Server health check
+      operations:
+      - name: health-check
+        method: GET
+        description: Check if Trivy server is running and healthy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: version
+      path: /version
+      description: Server version information
+      operations:
+      - name: get-version
+        method: GET
+        description: Get Trivy server and database version information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: trivy-security-api
-      description: "Unified REST API for Trivy security scanning operations."
-      resources:
-        - path: /v1/health
-          name: health
-          description: "Trivy server health status"
-          operations:
-            - method: GET
-              name: health-check
-              description: "Check if Trivy server is running"
-              call: "trivy-server.health-check"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/version
-          name: version
-          description: "Trivy server and database version"
-          operations:
-            - method: GET
-              name: get-version
-              description: "Get server and vulnerability database versions"
-              call: "trivy-server.get-version"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: trivy-security-mcp
-      transport: http
-      description: "MCP server for AI-assisted security scanning with Trivy."
-      tools:
-        - name: trivy-health-check
-          description: "Check if Trivy security scanner server is running and healthy"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trivy-server.health-check"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: trivy-get-version
-          description: "Get Trivy server version and vulnerability database version"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trivy-server.get-version"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: trivy-security-api
+    description: Unified REST API for Trivy security scanning operations.
+    resources:
+    - path: /v1/health
+      name: health
+      description: Trivy server health status
+      operations:
+      - method: GET
+        name: health-check
+        description: Check if Trivy server is running
+        call: trivy-server.health-check
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/version
+      name: version
+      description: Trivy server and database version
+      operations:
+      - method: GET
+        name: get-version
+        description: Get server and vulnerability database versions
+        call: trivy-server.get-version
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: trivy-security-mcp
+    transport: http
+    description: MCP server for AI-assisted security scanning with Trivy.
+    tools:
+    - name: trivy-health-check
+      description: Check if Trivy security scanner server is running and healthy
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trivy-server.health-check
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: trivy-get-version
+      description: Get Trivy server version and vulnerability database version
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trivy-server.get-version
+      outputParameters:
+      - type: object
+        mapping: $.
