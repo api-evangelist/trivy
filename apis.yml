@@ -155,6 +155,14 @@ common:
     url: vocabulary/trivy-vocabulary.yml
   - type: x-profiled
     url: '2026-05'
+  - type: Integrations
+    url: https://trivy.dev/partners
+integrations:
+  - name: Minimus
+  - name: Root
+  - name: Echo
+  - name: Seal Security
+  - name: ActiveState
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
