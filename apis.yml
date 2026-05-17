@@ -40,7 +40,7 @@ apis:
     properties:
       - type: Documentation
         url: https://trivy.dev/latest/docs/references/modes/client-server/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/aquasecurity/trivy
       - type: OpenAPI
         url: openapi/trivy-server-openapi.yml
@@ -64,7 +64,7 @@ apis:
     properties:
       - type: Documentation
         url: https://aquasecurity.github.io/trivy-operator/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/aquasecurity/trivy-operator
       - type: KubernetesCRD
         url: crd/aquasecurity.github.io_vulnerabilityreports.yaml
@@ -109,9 +109,9 @@ apis:
     properties:
       - type: Documentation
         url: https://trivy.dev/latest/docs/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://trivy.dev/latest/getting-started/installation/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/aquasecurity/trivy
 
 common:
@@ -119,11 +119,11 @@ common:
     url: https://trivy.dev/
   - type: Documentation
     url: https://aquasecurity.github.io/trivy/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://aquasecurity.github.io/trivy/latest/getting-started/installation/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/aquasecurity
-  - type: GitHub Repository
+  - type: GitHubRepository
     url: https://github.com/aquasecurity/trivy
   - type: Trivy Operator
     url: https://github.com/aquasecurity/trivy-operator
@@ -145,7 +145,7 @@ common:
     url: json-schema/trivy-scan-result-schema.json
   - type: JSON Structure
     url: json-structure/trivy-scan-structure.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/trivy-context.jsonld
   - type: Spectral Rules
     url: rules/trivy-rules.yml
