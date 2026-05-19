@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trivy Server API — Health
+  description: 'Trivy Server API — Health. 1 operations. Lead operation: Health Check. Self-contained Naftiko capability covering
+    one Trivy business surface.'
+  tags:
+  - Trivy
+  - Health
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRIVY_API_KEY: TRIVY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-health
+    baseUri: http://localhost:4954
+    description: Trivy Server API — Health business capability. Self-contained, no shared references.
+    resources:
+    - name: healthz
+      path: /healthz
+      operations:
+      - name: healthcheck
+        method: GET
+        description: Health Check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Trivy-Token
+      value: '{{env.TRIVY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: server-health-rest
+    port: 8080
+    description: REST adapter for Trivy Server API — Health. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/healthz
+      name: healthz
+      description: REST surface for healthz.
+      operations:
+      - method: GET
+        name: healthcheck
+        description: Health Check
+        call: server-health.healthcheck
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-health-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trivy Server API — Health. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: health-check
+      description: Health Check
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-health.healthcheck
+      outputParameters:
+      - type: object
+        mapping: $.

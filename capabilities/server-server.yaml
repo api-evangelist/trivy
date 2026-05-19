@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trivy Server API — Server
+  description: 'Trivy Server API — Server. 1 operations. Lead operation: Get Server Version. Self-contained Naftiko capability
+    covering one Trivy business surface.'
+  tags:
+  - Trivy
+  - Server
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRIVY_API_KEY: TRIVY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-server
+    baseUri: http://localhost:4954
+    description: Trivy Server API — Server business capability. Self-contained, no shared references.
+    resources:
+    - name: version
+      path: /version
+      operations:
+      - name: getversion
+        method: GET
+        description: Get Server Version
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Trivy-Token
+      value: '{{env.TRIVY_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: server-server-rest
+    port: 8080
+    description: REST adapter for Trivy Server API — Server. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/version
+      name: version
+      description: REST surface for version.
+      operations:
+      - method: GET
+        name: getversion
+        description: Get Server Version
+        call: server-server.getversion
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-server-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trivy Server API — Server. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-server-version
+      description: Get Server Version
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-server.getversion
+      outputParameters:
+      - type: object
+        mapping: $.
