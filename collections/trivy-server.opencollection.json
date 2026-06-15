@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trivy Server API",
+    "version": "0.70.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4954/healthz"
+          },
+          "docs": "Check if the Trivy server is running and healthy. Returns 200 OK with \"ok\" body when the server is operational. Does not require authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Server Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4954/version"
+          },
+          "docs": "Retrieve the Trivy server version, vulnerability database version, Java database version, and policy bundle version. Does not require authentication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

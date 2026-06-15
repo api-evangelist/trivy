@@ -1,0 +1,183 @@
+{
+  "item": [
+    {
+      "id": "c2de9115-89d4-45f1-9481-8f90be1ac447",
+      "name": "Health",
+      "description": {
+        "content": "Server health and liveness checks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "102a2613-62e3-4219-bc17-14975a29f0bc",
+          "name": "Health Check",
+          "request": {
+            "name": "Health Check",
+            "description": {
+              "content": "Check if the Trivy server is running and healthy. Returns 200 OK with \"ok\" body when the server is operational. Does not require authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "healthz"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e42bb04-6050-439a-bba2-7fbb71de39cf",
+              "name": "Server is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "ok",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e95ad437-dd3a-4f64-b2ac-2290418e0967",
+      "name": "Server",
+      "description": {
+        "content": "Server metadata and version information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a62b94f1-d94a-4637-ae01-9e0dd2f1b275",
+          "name": "Get Server Version",
+          "request": {
+            "name": "Get Server Version",
+            "description": {
+              "content": "Retrieve the Trivy server version, vulnerability database version, Java database version, and policy bundle version. Does not require authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47898d96-df34-44d8-bcb1-3801d4a5e907",
+              "name": "Server version information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Version\": \"0.70.0\",\n  \"VulnerabilityDB\": {\n    \"Version\": 8973,\n    \"NextUpdate\": \"2001-01-24T06:31:58.677Z\",\n    \"UpdatedAt\": \"1982-12-17T18:14:21.583Z\",\n    \"DownloadedAt\": \"1949-10-29T14:39:54.965Z\"\n  },\n  \"JavaDB\": {\n    \"Version\": 2764,\n    \"UpdatedAt\": \"1971-03-06T07:27:37.831Z\",\n    \"NextUpdate\": \"1971-12-06T04:47:28.673Z\"\n  },\n  \"PolicyBundle\": {\n    \"Digest\": \"string\",\n    \"DownloadedAt\": \"1955-12-26T02:06:44.258Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:4954",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a2633868-fcbf-4455-b920-30d793f52713",
+    "name": "Trivy Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trivy Server API exposes HTTP endpoints when running Trivy in client/server mode. In this mode, the server maintains a local vulnerability database and clients submit scan requests without needing to download the database themselves. The server listens on port 4954 by default and supports optional token-based authentication.",
+      "type": "text/plain"
+    }
+  }
+}
