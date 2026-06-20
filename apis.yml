@@ -6,7 +6,7 @@ description: >-
   CLI tool, in client/server mode with an HTTP API, and as a Kubernetes Operator (trivy-operator) that continuously
   scans clusters and generates security reports as native Kubernetes Custom Resources.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Containers
   - Kubernetes
