@@ -127,7 +127,7 @@ common:
     url: https://artifacthub.io/packages/helm/aqua/trivy-operator
   - type: Docker Image
     url: https://hub.docker.com/r/aquasec/trivy
-  - type: Releases
+  - type: ReleaseNotes
     url: https://github.com/aquasecurity/trivy/releases
   - type: OpenAPI
     url: openapi/trivy-server-openapi.yml
@@ -135,11 +135,11 @@ common:
     url: json-schema/trivy-vulnerability-report-schema.json
   - type: JSONSchema
     url: json-schema/trivy-scan-result-schema.json
-  - type: JSON Structure
+  - type: JSONStructure
     url: json-structure/trivy-scan-structure.json
   - type: JSONLD
     url: json-ld/trivy-context.jsonld
-  - type: Spectral Rules
+  - type: SpectralRules
     url: rules/trivy-rules.yml
   - type: Vocabulary
     url: vocabulary/trivy-vocabulary.yml
