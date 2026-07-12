@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/trivy-server-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: TrivyToken
+  type: apiKey
+  in: header
+  parameter: Trivy-Token
+  description: Optional token-based authentication. When the server is started with --token,
+    all requests must include the token in the Trivy-Token header.
+  sources:
+  - openapi/trivy-server-openapi.yml
