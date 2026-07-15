@@ -107,6 +107,8 @@ apis:
       - type: GitHubRepository
         url: https://github.com/aquasecurity/trivy
 common:
+  - type: AgenticAccess
+    url: agentic-access/trivy-agentic-access.yml
   - type: DomainSecurity
     url: security/trivy-domain-security.yml
   - type: Authentication
