@@ -6,7 +6,20 @@ description: >-
   CLI tool, in client/server mode with an HTTP API, and as a Kubernetes Operator (trivy-operator) that continuously
   scans clusters and generates security reports as native Kubernetes Custom Resources.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/trivy.png
 tags:
   - Containers
   - Kubernetes
@@ -21,91 +34,99 @@ created: '2026-03-26'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: trivy:trivy-server
-    name: Trivy Server API
-    description: >-
-      Trivy can run in client/server mode where the server maintains vulnerability databases and clients submit scan
-      requests. The server exposes HTTP endpoints including /healthz for liveness checks and /version for server version
-      information. Authentication is via token-based header (Trivy-Token).
-    humanURL: https://trivy.dev/latest/docs/references/modes/client-server/
-    baseURL: http://localhost:4954
-    tags:
-      - Security
-      - Vulnerability Scanning
-      - Server Mode
-      - HTTP API
-    properties:
-      - type: Documentation
-        url: https://trivy.dev/latest/docs/references/modes/client-server/
-      - type: GitHubRepository
-        url: https://github.com/aquasecurity/trivy
-      - type: OpenAPI
-        url: openapi/trivy-server-openapi.yml
-  - aid: trivy:trivy-operator
-    name: Trivy Operator
-    description: >-
-      The Trivy Operator is a Kubernetes-native security toolkit that automatically scans clusters and generates
-      security reports as Kubernetes Custom Resources. It defines 12 CRDs covering vulnerability reports, config audit
-      reports, exposed secret reports, SBOM reports, RBAC assessment reports, infrastructure assessment reports, and
-      compliance reports.
-    humanURL: https://github.com/aquasecurity/trivy-operator
-    baseURL: https://kubernetes.default.svc
-    tags:
-      - Kubernetes
-      - Security
-      - CRD
-      - Operator
-      - Vulnerability Scanning
-    properties:
-      - type: Documentation
-        url: https://aquasecurity.github.io/trivy-operator/
-      - type: GitHubRepository
-        url: https://github.com/aquasecurity/trivy-operator
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_vulnerabilityreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_configauditreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_exposedsecretreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_sbomreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_clustercompliancereports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_clusterconfigauditreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_clusterinfraassessmentreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_clusterrbacassessmentreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_clustersbomreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_clustervulnerabilityreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_infraassessmentreports.yaml
-      - type: KubernetesCRD
-        url: crd/aquasecurity.github.io_rbacassessmentreports.yaml
-  - aid: trivy:trivy-cli
-    name: Trivy CLI
-    description: >-
-      The primary interface for Trivy is its command-line tool, which scans container images, filesystems, Git
-      repositories, Kubernetes clusters, virtual machine images, and SBOMs. Supports multiple output formats including
-      JSON, SARIF, CycloneDX, SPDX, and table output for CI/CD integration.
-    humanURL: https://trivy.dev/latest/docs/
-    baseURL: https://trivy.dev
-    tags:
-      - CLI
-      - Security
-      - DevSecOps
-      - Containers
-      - Kubernetes
-    properties:
-      - type: Documentation
-        url: https://trivy.dev/latest/docs/
-      - type: GettingStarted
-        url: https://trivy.dev/latest/getting-started/installation/
-      - type: GitHubRepository
-        url: https://github.com/aquasecurity/trivy
+- aid: trivy:trivy-operator
+  name: Trivy Operator
+  description: >-
+    The Trivy Operator is a Kubernetes-native security toolkit that automatically scans clusters and generates
+    security reports as Kubernetes Custom Resources. It defines 12 CRDs covering vulnerability reports,
+    config audit reports, exposed secret reports, SBOM reports, RBAC assessment reports, infrastructure
+    assessment reports, and compliance reports.
+  humanURL: https://github.com/aquasecurity/trivy-operator
+  baseURL: https://kubernetes.default.svc
+  tags:
+  - Kubernetes
+  - Security
+  - CRD
+  - Operator
+  - Vulnerability Scanning
+  properties:
+  - type: Documentation
+    url: https://aquasecurity.github.io/trivy-operator/
+  - type: GitHubRepository
+    url: https://github.com/aquasecurity/trivy-operator
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_vulnerabilityreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_configauditreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_exposedsecretreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_sbomreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_clustercompliancereports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_clusterconfigauditreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_clusterinfraassessmentreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_clusterrbacassessmentreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_clustersbomreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_clustervulnerabilityreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_infraassessmentreports.yaml
+  - type: KubernetesCRD
+    url: crd/aquasecurity.github.io_rbacassessmentreports.yaml
+- aid: trivy:trivy-cli
+  name: Trivy CLI
+  description: >-
+    The primary interface for Trivy is its command-line tool, which scans container images, filesystems,
+    Git repositories, Kubernetes clusters, virtual machine images, and SBOMs. Supports multiple output
+    formats including JSON, SARIF, CycloneDX, SPDX, and table output for CI/CD integration.
+  humanURL: https://trivy.dev/latest/docs/
+  baseURL: https://trivy.dev
+  tags:
+  - CLI
+  - Security
+  - DevSecOps
+  - Containers
+  - Kubernetes
+  properties:
+  - type: Documentation
+    url: https://trivy.dev/latest/docs/
+  - type: GettingStarted
+    url: https://trivy.dev/latest/getting-started/installation/
+  - type: GitHubRepository
+    url: https://github.com/aquasecurity/trivy
+- aid: trivy:trivy-health-api
+  name: Trivy Health API
+  description: Server health and liveness checks
+  humanURL: https://trivy.dev/latest/docs/references/modes/client-server/
+  baseURL: http://localhost:4954
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/trivy-health-api-openapi.yml
+  - type: Documentation
+    url: https://trivy.dev/latest/docs/references/modes/client-server/
+  - type: GitHubRepository
+    url: https://github.com/aquasecurity/trivy
+- aid: trivy:trivy-server-api
+  name: Trivy Server API
+  description: Server metadata and version information
+  humanURL: https://trivy.dev/latest/docs/references/modes/client-server/
+  baseURL: http://localhost:4954
+  tags:
+  - Server
+  properties:
+  - type: OpenAPI
+    url: openapi/trivy-server-api-openapi.yml
+  - type: Documentation
+    url: https://trivy.dev/latest/docs/references/modes/client-server/
+  - type: GitHubRepository
+    url: https://github.com/aquasecurity/trivy
 common:
   - type: AgenticAccess
     url: agentic-access/trivy-agentic-access.yml
