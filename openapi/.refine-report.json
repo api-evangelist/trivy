@@ -1,0 +1,16 @@
+{
+  "provider": "trivy",
+  "sources": [
+    "trivy-health-api-openapi.yml",
+    "trivy-server-api-openapi.yml"
+  ],
+  "outputs": [
+    "trivy-health-api-openapi.yml",
+    "trivy-server-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
