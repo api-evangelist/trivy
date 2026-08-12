@@ -128,6 +128,9 @@ apis:
   - type: GitHubRepository
     url: https://github.com/aquasecurity/trivy
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/aquasecurity/trivy-operator/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/trivy-agentic-access.yml
   - type: DomainSecurity
@@ -157,7 +160,7 @@ common:
   - type: ReleaseNotes
     url: https://github.com/aquasecurity/trivy/releases
   - type: OpenAPI
-    url: openapi/trivy-server-openapi.yml
+    url: openapi/_original/trivy-server-openapi.yml
   - type: JSONSchema
     url: json-schema/trivy-vulnerability-report-schema.json
   - type: JSONSchema
@@ -170,8 +173,6 @@ common:
     url: rules/trivy-rules.yml
   - type: Vocabulary
     url: vocabulary/trivy-vocabulary.yml
-  - type: x-profiled
-    url: 2026-05
   - type: Integrations
     url: https://trivy.dev/partners
   - name: MCP Server
