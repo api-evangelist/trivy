@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trivy Health Server API",
+    "version": "0.70.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Server Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4954/version"
+          },
+          "docs": "Retrieve the Trivy server version, vulnerability database version, Java database version, and policy bundle version. Does not require authentication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
