@@ -6,6 +6,19 @@ description: >-
   CLI tool, in client/server mode with an HTTP API, and as a Kubernetes Operator (trivy-operator) that continuously
   scans clusters and generates security reports as native Kubernetes Custom Resources.
 type: Index
+deliveryModel:
+  model: self-hosted
+  license: Apache-2.0
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -137,6 +150,14 @@ apis:
   - type: GitHubRepository
     url: https://github.com/aquasecurity/trivy
 common:
+  - type: IssueTracker
+    url: https://github.com/aquasecurity/trivy-operator/issues
+  - type: Releases
+    url: https://github.com/aquasecurity/trivy-operator/releases
+  - type: CodeOfConduct
+    url: https://github.com/aquasecurity/.github/blob/master/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/aquasecurity/trivy-operator/blob/main/CONTRIBUTING.md
   - type: License
     name: Apache-2.0
     url: https://github.com/aquasecurity/trivy-operator/blob/main/LICENSE
