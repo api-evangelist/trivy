@@ -142,6 +142,8 @@ apis:
   humanURL: https://trivy.dev/latest/docs/references/modes/client-server/
   baseURL: http://localhost:4954
   tags:
+  - Servers
+  tags_raw:
   - Server
   properties:
   - type: OpenAPI
