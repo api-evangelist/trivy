@@ -1,8 +1,7 @@
 {
   "provider": "trivy",
   "sources": [
-    "trivy-health-api-openapi.yml",
-    "trivy-server-api-openapi.yml"
+    "_original/trivy-server-openapi.yml"
   ],
   "outputs": [
     "trivy-health-api-openapi.yml",
@@ -11,6 +10,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "trivy-server-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "trivy-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trivy-server-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

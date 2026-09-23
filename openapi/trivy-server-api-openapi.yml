@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trivy Health Server API
+  title: Trivy Server API
   description: The Trivy Server API exposes HTTP endpoints when running Trivy in client/server mode. In this mode, the server maintains a local vulnerability database and clients submit scan requests without needing to download the database themselves. The server listens on port 4954 by default and supports optional token-based authentication.
   version: 0.70.0
   contact:
