@@ -40,7 +40,7 @@ tags:
   - SBOM
   - Security
   - Vulnerability Scanning
-  - Open-Source
+  - Open Source
   - DevSecOps
   - Cloud Security
 tags_raw:
@@ -52,6 +52,7 @@ tags_raw:
   - Open Source
   - DevSecOps
   - Cloud Security
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/trivy/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-05-19'
@@ -108,7 +109,6 @@ apis:
     Git repositories, Kubernetes clusters, virtual machine images, and SBOMs. Supports multiple output
     formats including JSON, SARIF, CycloneDX, SPDX, and table output for CI/CD integration.
   humanURL: https://trivy.dev/latest/docs/
-  baseURL: https://trivy.dev
   tags:
   - CLI
   - Security
