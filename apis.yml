@@ -153,6 +153,12 @@ apis:
   - type: GitHubRepository
     url: https://github.com/aquasecurity/trivy
 common:
+  - type: Plans
+    url: plans/trivy-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/trivy-rate-limits.yml
+  - type: FinOps
+    url: finops/trivy-finops.yml
   - type: IssueTracker
     url: https://github.com/aquasecurity/trivy-operator/issues
   - type: Releases
